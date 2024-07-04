@@ -9,12 +9,15 @@ To create a copy of this project and run it locally, you will need:
 
 Cloning this proyect and running npm i should install every dependency you need, anyways you can see the needed ones below.
 
-#Needed dependencies to run project
+Needed dependencies to run project
 - nodemon
 - ts-node
 - typescript
+- cors
+- helmet
 - @types/express
 - @types/node
+- @types/cors
 
 
 Developer dependencies:
