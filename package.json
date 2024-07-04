@@ -1,0 +1,25 @@
+{
+  "name": "bugtrackifybackend",
+  "version": "1.0.0",
+  "description": "Bug tracking software backend",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.ts"
+  },
+  "author": "Bruno Gonzalez",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.44.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.9",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  }
+}
