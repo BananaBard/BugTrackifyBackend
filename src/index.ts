@@ -1,10 +1,12 @@
 // src/index.js
-import express, { Errback, ErrorRequestHandler, Express, NextFunction, Request, Response } from "express";
+import express, { Express, NextFunction, Request, Response, request } from "express";
 import cors from 'cors';
-import dotenv from "dotenv";
 import helmet from "helmet";
+import authRoutes from "./routes/auth.routes";
+import { configDotenv } from "dotenv";
+import { supabaseAdmin } from "./infra/supabaseClient";
 
-dotenv.config();
+configDotenv()
 
 const app: Express = express();
 const PORT = process.env.PORT || 3000;
@@ -14,25 +16,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(helmet());
 
-// Rutas
-app.get('/api/example', (req, res) => {
-  res.send('GET request to the homepage');
-});
+app.use('/auth', authRoutes);
 
-app.post('/api/example', (req, res) => {
-  res.json({ message: 'POST request to the homepage' });
-});
-
-app.put('/api/example/:id', (req, res) => {
-  res.json({ message: `PUT request to update item with id ${req.params.id}` });
-});
-
-app.delete('/api/example/:id', (req, res) => {
-  res.json({ message: `DELETE request to delete item with id ${req.params.id}` });
-});
+app.delete('/delete', async(req: Request, res: Response) => {
+  const user = req.body.user
+  const { data, error } = await supabaseAdmin.auth.admin.deleteUser(user)
+  res.status(200).json({data})
+})
 
 // Middleware de manejo de errores
-app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
