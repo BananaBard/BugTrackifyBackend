@@ -3,10 +3,10 @@ import { signUpWithEmailService } from "../services/auth/signUp.service";
 import getErrorMessage from "../utils/getErrorMessage";
 
 const signUpWithEmailController = async(req: Request, res: Response) => {
-    const {email, password} = req.body;
+    const {email, password, fullname, role} = req.body;
 
     try {
-        const data = await signUpWithEmailService({email, password});
+        const data = await signUpWithEmailService({email, password, fullname, role});
         res.status(201).json(data);
         
     } catch(error) {
