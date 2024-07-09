@@ -1,4 +1,4 @@
-import supabase, { supabaseAdmin } from "../../infra/supabaseClient"
+import { supabaseAdmin } from "../../infra/supabaseClient"
 import getErrorMessage from "../../utils/getErrorMessage";
 import getUserByEmailService from "../users/getUserByEmail.service";
 
@@ -30,7 +30,7 @@ const signUpWithEmailService = async ({ email, password, fullname, role }: SignU
                 .select()
             const uid = data?.user?.id
             const createdUser = await supabaseAdmin.from('users').select().eq('id', uid!)
-            let userData = createdUser?.data![0]
+            let userData = createdUser?.data
 
         return {
             token: data.session?.access_token,
