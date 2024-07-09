@@ -2,6 +2,7 @@
 import express, { Express, NextFunction, Request, Response, request } from "express";
 import cors from 'cors';
 import helmet from "helmet";
+import cookieParser from 'cookie-parser';
 import authRoutes from "./routes/auth.routes";
 import { configDotenv } from "dotenv";
 import { supabaseAdmin } from "./infra/supabaseClient";
@@ -13,21 +14,19 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cookieParser());
+app.use(cors({
+  origin: process.env.CORS_ORIGIN,
+  credentials: true
+}));
 app.use(helmet());
 
 app.use('/auth', authRoutes);
 
-app.delete('/delete', async(req: Request, res: Response) => {
-  const user = req.body.user
-  const { data, error } = await supabaseAdmin.auth.admin.deleteUser(user)
-  res.status(200).json({data})
-})
-
 // Middleware de manejo de errores
 app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
   console.error(err.stack);
-  res.status(500).send('Something broke!');
+  res.status(500).send('Something went wrong!');
 });
 
 // Iniciar el servidor
