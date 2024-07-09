@@ -8,7 +8,6 @@ const signUpWithEmailController = async(req: Request, res: Response) => {
     try {
         const data = await signUpWithEmailService({email, password, fullname, role});
         const token = data?.token;
-        console.log(data)
         return res
         .status(201)
         .cookie('access_token', token, {
@@ -23,7 +22,6 @@ const signUpWithEmailController = async(req: Request, res: Response) => {
         });
         
     } catch(error) {
-        console.log(error)
         return res.status(400).json({message: getErrorMessage(error)})
     }
 }

@@ -7,7 +7,6 @@ const getUserByEmailService = async(email: string) => {
         throw new Error(error.message);
     }
 
-    console.log(data.length)
     return data.length !== 0;
 }
 
