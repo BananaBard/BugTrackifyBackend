@@ -7,7 +7,7 @@ const getUserByEmailService = async(email: string) => {
         throw new Error(error.message);
     }
 
-    return data.length !== 0;
+    return data[0]
 }
 
-export default getUserByEmailService
+export {getUserByEmailService}
