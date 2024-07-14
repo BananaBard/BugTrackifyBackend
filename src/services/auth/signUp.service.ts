@@ -1,6 +1,6 @@
 import { supabaseAdmin } from "../../infra/supabaseClient"
 import getErrorMessage from "../../utils/getErrorMessage";
-import getUserByEmailService from "../users/getUserByEmail.service";
+import {checkUserExistService} from "../users/checkUserExist.service";
 
 interface SignUpWithEmailServiceArgs {
     email: string;
@@ -11,7 +11,7 @@ interface SignUpWithEmailServiceArgs {
 
 const signUpWithEmailService = async ({ email, password, fullname, role }: SignUpWithEmailServiceArgs) => {
     try {
-        const isUserAlready = await getUserByEmailService(email);
+        const isUserAlready = await checkUserExistService(email);
         if (isUserAlready) {
             throw new Error('Email already in use!')
         }
