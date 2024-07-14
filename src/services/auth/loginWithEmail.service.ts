@@ -15,4 +15,4 @@ const loginWithEmailService = async({email, password}: LoginWithEmailArgs) => {
     }
 }
 
-export default loginWithEmailService
+export {loginWithEmailService};

@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import loginWithEmailService from "../services/auth/loginWithEmail.service";
+import { loginWithEmailService } from "../services/auth/loginWithEmail.service";
 import getErrorMessage from "../utils/getErrorMessage";
 import { supabaseAdmin } from "../infra/supabaseClient";
 
-const loginWithEmail = async (req: Request, res: Response) => {
+const loginWithEmailController = async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
     try {
@@ -32,4 +32,4 @@ const loginWithEmail = async (req: Request, res: Response) => {
     }
 }
 
-export { loginWithEmail }
+export { loginWithEmailController }
