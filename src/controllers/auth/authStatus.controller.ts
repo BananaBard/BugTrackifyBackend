@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { configDotenv } from 'dotenv';
-import { verifyToken } from '../utils/verifyToken';
-import { getUserByEmailService } from '../services/users/getUserByEmail.service';
+import { verifyToken } from '../../utils/verifyToken';
+import { getUserByEmailService } from '../../services/users/getUserByEmail.service';
 
 configDotenv()
 

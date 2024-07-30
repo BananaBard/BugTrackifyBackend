@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { signUpWithEmailService } from "../services/auth/signUp.service";
-import getErrorMessage from "../utils/getErrorMessage";
+import { signUpWithEmailService } from "../../services/auth/signUp.service";
+import getErrorMessage from "../../utils/getErrorMessage";
 
 const signUpWithEmailController = async(req: Request, res: Response) => {
     const {email, password, fullname, role} = req.body;

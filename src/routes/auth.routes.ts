@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response, Router } from "express";
-import { signUpWithEmailController } from "../controllers/signUp.controller";
-import { loginWithEmailController } from "../controllers/loginWithEmail.controller";
-import { authStatusController } from "../controllers/authStatus.controller";
+import { signUpWithEmailController } from "../controllers/auth/signUp.controller";
+import { loginWithEmailController } from "../controllers/auth/loginWithEmail.controller";
+import { authStatusController } from "../controllers/auth/authStatus.controller";
 
 const authRoutes = Router()
 
