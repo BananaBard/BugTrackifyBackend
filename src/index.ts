@@ -5,7 +5,7 @@ import helmet from "helmet";
 import cookieParser from 'cookie-parser';
 import authRoutes from "./routes/auth.routes";
 import { configDotenv } from "dotenv";
-import { supabaseAdmin } from "./infra/supabaseClient";
+import {projectsRoutes} from "./routes/projects.routes";
 
 configDotenv()
 
@@ -22,6 +22,7 @@ app.use(cors({
 app.use(helmet());
 
 app.use('/auth', authRoutes);
+app.use('/projects', projectsRoutes);
 
 // Middleware de manejo de errores
 app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
