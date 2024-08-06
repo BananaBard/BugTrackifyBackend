@@ -3,16 +3,15 @@ import { createProjectService } from "../../services/projects/createProject.serv
 import getErrorMessage from "../../utils/getErrorMessage";
 
 const createProjectController = async (req: Request, res: Response) => {
-    const { title, description, leader } = req.body;
+    const { title, description, leader, status } = req.body;
 
     try {
-        const data = await createProjectService({ title, description, leader });
+        const data = await createProjectService({ title, description, leader, status });
         if (data) {
-            return res.status(200).json({
-                ok: 'ok'
+            return res.status(201).json({
+                project: data
             })
         }
-        console.log(data)
     } catch (error) {
         return res.status(400).json({ message: getErrorMessage(error) })
     }
