@@ -220,9 +220,9 @@ export type Database = {
         Row: {
           createdat: string
           email: string
-          fullname: string | null
+          fullname: string
           id: string
-          role: string | null
+          role: string
           totalincidents: number | null
           totalprojects: number | null
           updatedat: string | null
@@ -230,9 +230,9 @@ export type Database = {
         Insert: {
           createdat?: string
           email: string
-          fullname?: string | null
+          fullname: string
           id: string
-          role?: string | null
+          role: string
           totalincidents?: number | null
           totalprojects?: number | null
           updatedat?: string | null
@@ -240,14 +240,22 @@ export type Database = {
         Update: {
           createdat?: string
           email?: string
-          fullname?: string | null
+          fullname?: string
           id?: string
-          role?: string | null
+          role?: string
           totalincidents?: number | null
           totalprojects?: number | null
           updatedat?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "users_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {
