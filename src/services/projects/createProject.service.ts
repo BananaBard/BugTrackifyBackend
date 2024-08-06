@@ -5,17 +5,18 @@ interface CreateProjectServiceArgs {
     title: string;
     description: string;
     leader: string;
+    status: string;
 }
 
-const createProjectService = async ({ title, description, leader }: CreateProjectServiceArgs) => {
+const createProjectService = async ({ title, description, leader, status }: CreateProjectServiceArgs) => {
     try {
         const { data, error } = await supabase.from('Projects')
             .insert({
                 title: title,
                 description: description,
-                leader: leader
-            });
-            console.log(error)
+                leader: leader,
+                status: status
+            }).select();
             if (error) {
                 throw new Error(getErrorMessage(error));
             }
