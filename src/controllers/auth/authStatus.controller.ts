@@ -19,7 +19,9 @@ const authStatusController = async (req: Request, res: Response) => {
     const user = await getUserByEmailService(userEmail);
     res.status(200).json({user: user});
   } catch (error) {
-    res.status(401).json({message: getErrorMessage(error)});
+    res.status(401)
+    .clearCookie('access_token')
+    .json({message: getErrorMessage(error)});
   }
 };
 
