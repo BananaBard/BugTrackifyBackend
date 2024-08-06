@@ -13,7 +13,6 @@ const loginWithEmailController = async (req: Request, res: Response) => {
         const token = resp.data.session?.access_token;
         const uid = resp.data.user?.id
         const user = await supabaseAdmin.from('users').select().eq('id', uid!)
-
         return res
             .status(200)
             .cookie('access_token', token, {
