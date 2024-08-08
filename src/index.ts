@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 import authRoutes from "./routes/auth.routes";
 import { configDotenv } from "dotenv";
 import {projectsRoutes} from "./routes/projects.routes";
+import { incidentRoutes } from "./routes/incidents.routes";
 
 configDotenv()
 
@@ -23,6 +24,7 @@ app.use(helmet());
 
 app.use('/auth', authRoutes);
 app.use('/projects', projectsRoutes);
+app.use('/incidents', incidentRoutes);
 
 // Middleware de manejo de errores
 app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
