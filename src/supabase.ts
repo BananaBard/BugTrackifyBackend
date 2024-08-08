@@ -9,7 +9,7 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      ActivityLogs: {
+      activityLogs: {
         Row: {
           action: string | null
           created_at: string
@@ -44,7 +44,7 @@ export type Database = {
           },
         ]
       }
-      Comments: {
+      comments: {
         Row: {
           content: string
           createdAt: string
@@ -84,127 +84,127 @@ export type Database = {
             foreignKeyName: "Comments_incidentId_fkey"
             columns: ["incidentId"]
             isOneToOne: false
-            referencedRelation: "Incidents"
+            referencedRelation: "incidents"
             referencedColumns: ["id"]
           },
           {
             foreignKeyName: "Comments_parentId_fkey"
             columns: ["parentId"]
             isOneToOne: false
-            referencedRelation: "Comments"
+            referencedRelation: "comments"
             referencedColumns: ["id"]
           },
         ]
       }
-      Incidents: {
+      incidents: {
         Row: {
-          actualResult: string | null
-          assignedTo: string | null
-          createdAt: string
-          createdBy: string
-          description: string | null
-          expectedResult: string | null
+          actual_result: string
+          assigned_to: string | null
+          created_at: string
+          created_by: string
+          description: string
+          expected_result: string
           id: string
-          priority: string | null
-          projectId: string | null
-          severity: string | null
-          status: string | null
-          stepsToReproduce: string | null
-          title: string | null
-          updatedAt: string | null
+          priority: string
+          project_id: string
+          severity: string
+          status: string
+          steps_to_reproduce: string[]
+          title: string
+          updated_at: string | null
         }
         Insert: {
-          actualResult?: string | null
-          assignedTo?: string | null
-          createdAt?: string
-          createdBy: string
-          description?: string | null
-          expectedResult?: string | null
+          actual_result: string
+          assigned_to?: string | null
+          created_at?: string
+          created_by: string
+          description: string
+          expected_result: string
           id?: string
-          priority?: string | null
-          projectId?: string | null
-          severity?: string | null
-          status?: string | null
-          stepsToReproduce?: string | null
-          title?: string | null
-          updatedAt?: string | null
+          priority: string
+          project_id: string
+          severity: string
+          status: string
+          steps_to_reproduce: string[]
+          title: string
+          updated_at?: string | null
         }
         Update: {
-          actualResult?: string | null
-          assignedTo?: string | null
-          createdAt?: string
-          createdBy?: string
-          description?: string | null
-          expectedResult?: string | null
+          actual_result?: string
+          assigned_to?: string | null
+          created_at?: string
+          created_by?: string
+          description?: string
+          expected_result?: string
           id?: string
-          priority?: string | null
-          projectId?: string | null
-          severity?: string | null
-          status?: string | null
-          stepsToReproduce?: string | null
-          title?: string | null
-          updatedAt?: string | null
+          priority?: string
+          project_id?: string
+          severity?: string
+          status?: string
+          steps_to_reproduce?: string[]
+          title?: string
+          updated_at?: string | null
         }
         Relationships: [
           {
             foreignKeyName: "Incidents_assignedTo_fkey"
-            columns: ["assignedTo"]
+            columns: ["assigned_to"]
             isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]
           },
           {
             foreignKeyName: "Incidents_createdBy_fkey"
-            columns: ["createdBy"]
+            columns: ["created_by"]
             isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]
           },
           {
             foreignKeyName: "Incidents_projectId_fkey"
-            columns: ["projectId"]
+            columns: ["project_id"]
             isOneToOne: false
-            referencedRelation: "Projects"
+            referencedRelation: "projects"
             referencedColumns: ["id"]
           },
         ]
       }
-      Projects: {
+      projects: {
         Row: {
-          createdAt: string | null
-          description: string | null
+          created_at: string | null
+          description: string
           id: string
-          incidentCount: number | null
-          leader: string
-          startDate: string | null
+          incident_count: number
+          leader: string | null
+          start_date: string | null
           status: string | null
           team: string[] | null
-          title: string | null
-          updatedAt: string | null
+          title: string
+          updated_at: string | null
         }
         Insert: {
-          createdAt?: string | null
-          description?: string | null
+          created_at?: string | null
+          description: string
           id?: string
-          incidentCount?: number | null
-          leader: string
-          startDate?: string | null
+          incident_count?: number
+          leader?: string | null
+          start_date?: string | null
           status?: string | null
           team?: string[] | null
-          title?: string | null
-          updatedAt?: string | null
+          title: string
+          updated_at?: string | null
         }
         Update: {
-          createdAt?: string | null
-          description?: string | null
+          created_at?: string | null
+          description?: string
           id?: string
-          incidentCount?: number | null
-          leader?: string
-          startDate?: string | null
+          incident_count?: number
+          leader?: string | null
+          start_date?: string | null
           status?: string | null
           team?: string[] | null
-          title?: string | null
-          updatedAt?: string | null
+          title?: string
+          updated_at?: string | null
         }
         Relationships: [
           {
@@ -218,34 +218,34 @@ export type Database = {
       }
       users: {
         Row: {
-          createdat: string
+          created_at: string
           email: string
           fullname: string
           id: string
           role: string
-          totalincidents: number | null
-          totalprojects: number | null
-          updatedat: string | null
+          total_incidents: number | null
+          total_projects: number | null
+          updated_at: string | null
         }
         Insert: {
-          createdat?: string
+          created_at?: string
           email: string
           fullname: string
           id: string
           role: string
-          totalincidents?: number | null
-          totalprojects?: number | null
-          updatedat?: string | null
+          total_incidents?: number | null
+          total_projects?: number | null
+          updated_at?: string | null
         }
         Update: {
-          createdat?: string
+          created_at?: string
           email?: string
           fullname?: string
           id?: string
           role?: string
-          totalincidents?: number | null
-          totalprojects?: number | null
-          updatedat?: string | null
+          total_incidents?: number | null
+          total_projects?: number | null
+          updated_at?: string | null
         }
         Relationships: [
           {
@@ -262,7 +262,18 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      decreace_incident_count: {
+        Args: {
+          projectid: string
+        }
+        Returns: undefined
+      }
+      increment_incident_count: {
+        Args: {
+          projectid: string
+        }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never

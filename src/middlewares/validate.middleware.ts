@@ -3,7 +3,7 @@ import { z } from "zod";
 
 function validate<T extends z.ZodTypeAny>(schema: T) {
     return async function(req: Request, res: Response, next: NextFunction) {
-        console.log(req.body)
+        //console.log(req.body)
         try {
             await schema.parseAsync(req.body);
             return next();

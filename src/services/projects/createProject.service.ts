@@ -10,7 +10,7 @@ interface CreateProjectServiceArgs {
 
 const createProjectService = async ({ title, description, leader, status }: CreateProjectServiceArgs) => {
     try {
-        const { data, error } = await supabase.from('Projects')
+        const { data, error } = await supabase.from('projects')
             .insert({
                 title: title,
                 description: description,
