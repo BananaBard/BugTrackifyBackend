@@ -5,7 +5,7 @@ import getErrorMessage from "../../utils/getErrorMessage";
 const getUserProjectsService = async ( userId: string) => {
     try {
         const { data, error } = await supabase.from('projects')
-            .select('*, leader(fullname)')
+            .select('*, leader(fullname, id)')
             .eq('leader', userId)
         //console.log(data)
         if (data) return data;
