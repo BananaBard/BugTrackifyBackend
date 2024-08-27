@@ -12,7 +12,7 @@ const incidentSeverity = ["minor" , "major" , "critical" , "blocker"] as const;
 
 const incidentSchema = z.object({
     title: z.string().min(1, {message: 'Title is required'}).max(40, {message: 'Title must be 40 or fewer characters long'}),
-    description: z.string().min(1, {message: 'Description is required.'}).max(300, {message: 'Description must be 300 or fewer characters long'}),
+    description: z.string().min(1, {message: 'Description is required.'}).max(140, {message: 'Description must be 140 or fewer characters long'}),
     project_id: z.string().uuid({message: 'Invalid project ID'}),
     created_by: z.string().uuid({message: 'Invalid user ID'}),
     status: z.enum(incidentStatus),
